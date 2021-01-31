@@ -1,0 +1,240 @@
+@charset "UTF-8";
+
+*{
+	padding: 0;
+	margin: 0;
+}
+
+html{
+	height: 100%;
+}
+
+body{
+	height: 100%;
+    background-color: #222;
+}
+
+#wrapper{
+    width: 70%;
+	margin: 0 auto;
+	background-color: #fff;
+    padding: 15px; 
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    padding:15px;
+    font-size: 30pt;
+    color:#FFF;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#imgContainer{
+    height: 25%;
+    margin-bottom: 2%;
+    position: relative;
+    
+}
+#imgContainer img{
+    width:19.5%;
+    height: 100%;
+    border:1px solid #000;
+    border-radius: 100%;
+    margin:0 auto;
+}
+#imgUser li{
+    display: inline-block;
+    height:48px;
+    width: 40px;
+    margin:10px;
+}
+#wrapper p{
+    margin:10px;
+}
+#wrapper li img{
+    width:100%;
+    height:100%;
+}
+#p1{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:#777;
+    font-size: 14pt;
+}
+#p2{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color:#000;
+    font-size: 22pt;
+}
+#inputFields{
+    width: 100%;
+}
+#inputFields .slider{
+    width:50%;
+}
+#inputFields label{
+    font-size: 13pt;
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align: middle;
+}
+#inputFields p{
+    font-size: 15pt;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#inputFields li{
+    margin:2px;
+    display: inline-block;
+    width: 2%;
+    height: 2%;
+}
+.gender{
+    color: aqua;
+}
+.btnAvIn{
+    font-size: 30pt;
+    background-color: #fff;
+    color:#000;
+    position: absolute;
+    top: 40%;
+    border:1px solid black;
+    border-radius: 50%;
+}
+#btnIndietro{
+    position: absolute;
+    left:36%;
+}
+#btnAvanti{
+    position: absolute;
+    right:36%;
+}
+#btnSumbmit{
+    margin-top: 3%;
+    font-size: 18pt;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 3px;
+    border-radius: 15%;
+}
+input[type='radio']{
+    margin:1%;
+    vertical-align: middle;
+}
+#inputFields img{
+    width: 3%;
+    height: 3%;
+    margin: 1%;
+    vertical-align: middle;
+}
+
+#inputFields input[type='checkbox']{
+    vertical-align: middle;
+}
+@media (min-device-width : 540px) and (max-device-width : 1024px) {
+    #imgContainer img{
+        width:50%;
+    }
+    #p1{
+        font-size: 23pt;
+    }
+    #p2{
+        font-size: 36pt;
+    }
+    #btnIndietro{
+        position: absolute;
+        left:18%;
+    }
+    #btnAvanti{
+        position: absolute;
+        right:18%;
+    }
+    .btnAvIn{
+        top: 43%;
+        font-size: 40pt;
+    }
+    #imgUser li{
+        height:70px;
+        width: 60px;
+        margin:10px;
+    }
+    #inputFields p{
+        font-size: 25pt;
+    }
+    #inputFields .slider{
+        width:70%;
+    }
+    #inputFields label{
+        font-size: 23pt;
+    }
+    #btnSumbmit{
+        font-size: 25pt;
+    }
+    #inputFields img{
+        width: 5%;
+        height: 5%;
+        margin: 1%;
+    }
+}
+@media (max-device-width : 415px) {
+    h1{
+        font-size: 30pt;
+    }
+    #imgContainer img{
+        width:65%;
+    }
+    #p1{
+        font-size: 24pt;
+    }
+    #p2{
+        font-size: 40pt;
+    }
+    #btnIndietro{
+        position: absolute;
+        left:10%;
+        font-size: 50pt;
+    }
+    #btnAvanti{
+        position: absolute;
+        right:10%;
+        font-size: 50pt;
+    }
+    .btnAvIn{
+        top: 43%;
+    }
+    #imgUser li{
+        height:100px;
+        width: 88px;
+        margin:5px;
+        margin-top: 3%;
+    }
+    #inputFields p{
+        font-size: 35pt;
+        margin-top: 5%;
+    }
+    #inputFields .slider{
+        width:80%;
+    }
+    #inputFields label{
+        font-size: 35pt;
+    }
+    #btnSumbmit{
+        font-size: 30pt;
+    }
+    #inputFields img{
+        width: 8%;
+        height: 8%;
+        margin: 1%;
+        margin-top: 2%;
+    }
+    #optGenderp{
+        padding-bottom: 20px;
+    }
+}
+@media (max-device-width : 375px){
+    #inputFields img{
+        width: 10%;
+        height: 10%;
+        margin: 1%;
+        margin-top: 2%;
+    }
+    #btnSumbmit{
+        font-size: 30pt;
+    }
+}

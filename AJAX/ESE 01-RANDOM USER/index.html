@@ -1,0 +1,62 @@
+<!DOCTYPE html>        <!--  documento html5  --> 
+<html lang="it">    
+	<head>         
+		<meta charset="UTF-8" />         
+		<title> Random User Savoldelli </title>    
+		<link rel="stylesheet" href="index.css" />
+		<link rel="icon" href="img/icon.jpg" type="image/jpg" />
+		<script type="application/javascript"  src="jquery-3.5.1.min.js" ></script>
+		<script type="application/javascript"  src="index.js" ></script>
+	</head>   
+	<body>  
+        <h1> RANDOM USER GENERATOR </h1>
+		<div id="wrapper">
+			
+			<div id="imgContainer">
+				<button id="btnIndietro" class="btnAvIn"><</button>
+				<img id="randomUserImg"/>
+				<button id="btnAvanti" class="btnAvIn">></button>
+			</div>
+			<p id="p1"></p>
+			<p id="p2"></p>
+			<div id="imgUser">
+				<ul>
+					<li id="li1"><img id="imgName" src="img/1off.jpg" /></li>
+					<li id="li2"><img id="imgMail" src="img/2off.jpg"/></li>
+					<li id="li3"><img id="imgBirthday" src="img/3off.jpg"/></li>
+					<li id="li4"><img id="imgAddress" src="img/4off.jpg"/></li>
+					<li id="li5"><img id="imgPhoneNumber" src="img/5off.jpg"/></li>
+					<li id="li6"><img id="imgPassword" src="img/6off.jpg"/></li>
+				</ul>
+			</div>
+			<div id="inputFields">
+				<p id="selectedNumber">Selected number:</p>
+				<input type="range" min="1" max="30" value="1" class="slider" id="numberRange">
+				<p id="optGenderp">Gender to include:</p>
+				<input type="radio" id="male" name="gender" value="male">
+				<label for="male">Male</label>
+				<input type="radio" id="female" name="gender" value="female">
+				<label for="female">Female</label>
+				<input type="radio" id="all" name="gender" value="all">
+				<label for="other">All</label>
+				<ul>
+				<p>Nat to include:</p>
+				<li><input type="checkbox" id="BR" name="BR" value="BR"></li>
+				<img id="imgName" src="img/BR.gif" /><br>
+				<li><input type="checkbox" id="FR" name="FR" value="FR"></li>
+				<img id="imgName" src="img/FR.jpg" /><br>
+				<li><input type="checkbox" id="IE" name="IE" value="IE"></li>
+				<img id="imgName" src="img/IE.jpg" /><br>
+				<li><input type="checkbox" id="AU" name="AU" value="AU"></li>
+				<img id="imgName" src="img/AU.jpg"/><br>
+				<li><input type="checkbox" id="ES" name="ES" value="ES"></li>
+				<img id="imgName" src="img/ES.jpg"/><br>
+				<li><input type="checkbox" id="US" name="US" value="US"></li>
+				<img id="imgName" src="img/US.jpg"/><br>
+				</ul>	
+				<button type="submit" id="btnSumbmit" value="Submit">Submit</button>
+
+			</div>
+		</div>
+	</body> 
+</html>  

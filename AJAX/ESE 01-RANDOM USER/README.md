@@ -1,0 +1,5 @@
+_RANDOM USER SAVOLDELLI_
+
+Repository contente il progetto denominato "Random User" in cui prendendo spunto dall'originale https://randomuser.me/ vado a creare un sito che presenta le stesse funzionalità. Lo scopo di questo progetto è infatti quello di generare una o più identità casuali. All'apertura della scheda nella parte superiore viene presentato un singolo utente. Attraverso le immagini presenti si possono scorrere le informazione generate. Nella parte inferiore del sito è invece presente una form composta da uno slider per selezionare il numero di utenti da visualizzare, tre radio buttons che permettono di scegliere il sesso ("male", "female" e "all") ed una lista di checkbox accompagnate da una bandiera che rappresenta la nazione che è possibile selezionare. Alla pressione del tasto di submit viene effettuata una chiamata ajax che tiene conto delle selezioni nella form restituisce come results i dati degli utenti. Se il numero di utenti da generare è maggiore di 1 vengono resi utilizzabili i due bottoni (<, >) che permettono di scorrere gli utenti.
+
+**Savoldelli Alberto**
