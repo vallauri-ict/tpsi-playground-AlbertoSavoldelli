@@ -11,13 +11,10 @@ $(document).ready(function(){
 	let _wrapper = $("#wrapper")
 	let _mappa = $("#wrapper").children("div")
 	let _btnVisualizzaMappa = $("#wrapper").children("button").eq(0)
-	//  tag input sono NIPOTI d wrapper
 	let _dataInizio = $("#wrapper").find("input").eq(0)
 	let _dataFine = $("#wrapper").find("input").eq(1)
 	let _msg = $("#wrapper").children("label").eq(2)
 	let ombrelloni;
-
-	// gestione login
 	let _login = $("#login");
 	let _btnSubmit = $("#login .submit");
 
@@ -52,7 +49,7 @@ $(document).ready(function(){
 
 	_dataInizio.on("change",function(){
 		_dataFine.prop({"min":_dataInizio.val(),"disabled":false});
-		dataStart = new Date(_dataInizio.val()); // da stringa a object
+		dataStart = new Date(_dataInizio.val());
 		_btnVisualizzaMappa.prop("disabled",true);
 		_btnVisualizzaMappa.removeClass("buttonEnabled");
 	})
@@ -104,7 +101,6 @@ $(document).ready(function(){
 	function isDisponibile(ombrellone)
 	{
 		let pos1 = (dataStart-new Date(_dataInizio.prop("min")))/MMG;
-		//let pos2 = (dataEnd-new Date(_dataInizio.prop("min")))/MMG; formato iso/date : "yyyy-mm-ss"
 		let pos2 = (dataEnd-new Date(_dataInizio.prop("min")))/MMG;
 		console.log(pos1,pos2);
 		for (let i = pos1; i <= pos2; i++) {
@@ -126,7 +122,7 @@ $(document).ready(function(){
 		{
 			$(this).removeClass("blue");
 			let pos = vet.indexOf($(this).prop("id").split("-")[1]);
-			vet.splice(pos,1); // rimuovo dal vettore
+			vet.splice(pos,1);
 		}
 		console.log(vet);
 	}
@@ -153,7 +149,7 @@ $(document).ready(function(){
 				sleep();
 			}
 			alert("Prenotazione eseguita correttamente");
-			window.location.reload(); // refresh della pagina
+			window.location.reload();
 		})
 	}
 
