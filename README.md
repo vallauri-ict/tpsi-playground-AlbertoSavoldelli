@@ -9,4 +9,4 @@ _Il repository è suddivso in cartelle che comprendono i vari esercizi relativi 
 * _Ajax_
 
 
-**_Savoldelli Alberto_**
+_Savoldelli Alberto_
