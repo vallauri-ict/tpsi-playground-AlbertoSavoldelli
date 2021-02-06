@@ -100,7 +100,6 @@ $(document).ready(function () {
             for (const auto of automobili) {
                 let tr = $("<tr>");
                 tr.appendTo(tbody);
-                let td=$("<td>");
                 td.appendTo(tr);
                 td.text(_lstModelli.prop("nome"));
                 /********* */
