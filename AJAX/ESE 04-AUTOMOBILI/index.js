@@ -1,97 +1,163 @@
-"option strict"
+"use strict"
 
 const URL = "http://localhost:3000"
-
+let intestazione = [{
+    "tag":"th",
+    "text":"nomeModello",
+    "width":"15%",
+},
+{
+    "tag":"th",
+    "text":"alimentazione",
+    "width":"15%",
+},
+{
+    "tag":"th",
+    "text":"colore",
+    "width":"15%",
+},
+{
+    "tag":"th",
+    "text":"anno",
+    "width":"10%",
+},
+{
+    "tag":"th",
+    "text":"img",
+    "width":"20%",
+},
+{
+    "tag":"th",
+    "text":"Dettagli",
+    "width":"13%",
+},
+{
+    "tag":"th",
+    "text":"Elimina",
+    "width":"12%",
+}]
 $(document).ready(function () {
     let _lstMarche = $("#lstMarche");
     let _lstModelli = $("#lstModelli");
-	let _table= $("table")
-	let _dettagli=$(".row").eq(2).children("div").eq(1)
-    _dettagli.hide()
-    let request= inviaRichiesta("get", URL+"/marche");
+	let _table = $("table");
+	let _dettagli = $(".row").eq(2).children("div").eq(1);
+    _dettagli.hide();
+    let request = inviaRichiesta("get", URL + "/marche");
     request.fail(errore);
     request.done(function(marche){
         for (const marca of marche) {
-            let op=$("<option>");
+            let op = $("<option>");
             op.val(marca.id);
             op.text(marca.nome);
-            op.appendTo(_lstMarche);      
-    }
-    _lstMarche.prop("selectedIndex",-1);
-    })
-
-    _lstMarche.on("change",function(){
+            op.appendTo(_lstMarche);
+        }
+        _lstMarche.prop("selectedIndex",-1);
+    });
+    /****************************************/
+    _lstMarche.on("change", function(){
         _lstModelli.html("");
-        let codMarca=_lstMarche.val();
-        let request= inviaRichiesta("get", URL+"/modelli?codMarca="+codMarca);
+        let codMarca= _lstMarche.val();
+        let request = inviaRichiesta("get", URL + "/modelli?codMarca=" + codMarca);
         request.fail(errore);
         request.done(function(modelli){
-        for (const modello of modelli) {
-            let op=$("<option>");
-            op.val(modello.id);
-            op.text(modello.nome+" - "+modello.alimentazione);
-            op.appendTo(_lstModelli);
-        }
-        _lstModelli.prop("selectedIndex",-1);
-        })
+            for (const modello of modelli) {
+                let op = $("<option>");
+                op.val(modello.id);
+                op.text(modello.nome + " - " + modello.alimentazione);
+                op.appendTo(_lstModelli);
+                
+            }
+            
+            _lstModelli.prop("selectedIndex",-1);
+        });
     })
-    let intestazione=[{
-        "tag":"th",
-        "text":"nome",
-        "width":"15%",
-    },
-    {
-        "tag":"th",
-        "text":"alimentazione",
-        "width":"15%",
-    },
-    {
-        "tag":"th",
-        "text":"colore",
-        "width":"15%",
-    },
-    {
-        "tag":"th",
-        "text":"anno",
-        "width":"10%",
-    },
-    {
-        "tag":"th",
-        "text":"img",
-        "width":"15%",
-    },
-    {
-        "tag":"th",
-        "text":"dettagli",
-        "width":"13%",
-    },
-    {
-        "tag":"th",
-        "text":"elimina",
-        "width":"12%",
-    }
-    ]
-    _lstModelli.on("change",function(){
-        let opzioneSelezionata=_lstModelli.children("option").eq(_lstModelli.prop("selectedIndex").text);
-        _lstModelli.prop("nome", opzioneSelezionata.split(" - ",[0]));
-        console.log(opzioneSelezionata);
-        let codModello=_lstModelli.val();
-        let request= inviaRichiesta("get", URL+"/automobili?codModello="+codModello);
+    /*nomeModello, alimentazione, colore, anno, img. Le immagini hanno una altezza fissa di 65px.*/
+    _lstModelli.on("change", function(){
+        _table.empty();
+        let opzione_selezionata = _lstModelli.children("option").eq(_lstModelli.prop("selectedIndex")).text();
+        _lstModelli.prop("nome", opzione_selezionata.split(" - ")[0])
+        _lstModelli.prop("alimentazione", opzione_selezionata.split(" - ")[1])
+        _lstModelli.prop("json");
+        console.log(opzione_selezionata);
+        let codModello = _lstModelli.val();
+        let request = inviaRichiesta("get", URL + "/automobili?codModello=" + codModello);
         request.fail(errore);
         request.done(function(automobili){
-            let thead=$("<thead>");
+            let thead = $("<thead>");
             thead.appendTo(_table);
             let tr=$("<tr>");
             tr.appendTo(thead);
-            for(let i=0;i<intestazione.length;i++){
-                let th=$(`<${intestazione[i].tag}>` );
+            for (let i = 0; i < intestazione.length; i++) {
+                let th = $(`<${intestazione[i].tag}>`);
+                // let th = $("<th>")
                 th.appendTo(tr);
                 th.text(intestazione[i].text);
-                th.css({"width":intestazione[i].width})
+                th.css({"width":intestazione[i].width});
             }
+            let pos=0;
+            let tbody = $("<tbody>");
+            tbody.appendTo(_table)
+            for (const auto of automobili) {
+                let tr = $("<tr>");
+                tr.appendTo(tbody);
+                let td=$("<td>");
+                td.appendTo(tr);
+                td.text(_lstModelli.prop("nome"));
+                /********* */
+                td = $("<td>");
+                td.appendTo(tr);
+                td.text(_lstModelli.prop("alimentazione"));
+                /******************** */
+                td = $("<td>");
+                td.appendTo(tr);
+                td.text(auto.colore);
+                /********************** */
+                td = $("<td>");
+                td.appendTo(tr);
+                td.text(auto.anno);
+                /*********************** */
+                td = $("<td>");
+                td.appendTo(tr);
+                let img =$("<img>");
+                img.appendTo(td);
+                img.prop("src",`img/${auto.img}`);
+                img.css("height","65px");
+                /***************** */
+                td = $("<td>");
+                td.appendTo(tr);
+                let btn =$("<button>");
+                btn.addClass("btn btn-xs btn-success");
+                btn.appendTo(td);
+                btn.text("Dettagli");
+                btn.prop("automobile",auto)
+                btn.on("click",dettagliClick);
+                /******** */
+                td = $("<td>");
+                td.appendTo(tr);
+                btn =$("<button>");
+                btn.addClass("btn btn-xs btn-secondary");
+                btn.appendTo(td);
+                btn.text("Elimina");
+            }
+            
         })
     })
-    
+    function eliminaClick(){
+        let url=URL+"/automobili"+($(this).prop("id"));
+        let request=inviaRichiesta("delete",url);
+        request.fail(errore);
+        request.done(function(){
+            alert("record eliminato correttamente");
+            _lstModelli.trigger("change");
+        })
+    }
+    function dettagliClick(){
+        _dettagli.show();
+        $("#txtId").val($(this).prop("automobile").id);
+        $("#txtNome").val(_lstModelli.prop("nome"));
+        $("#txtAlimentazione").val(_lstModelli.prop("alimentazione"));
+    }
+
        
 
 		
