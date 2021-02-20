@@ -12,7 +12,7 @@
 	text-align:center;
 }
 .head input[type=radio]{
-	margin-left:20px;
+	margin-left:10px;
 }
 
 
@@ -35,16 +35,12 @@
 .content button{
    font-size:16pt;
 }
-
-/* immagine like */
 .like{
    width:25px;
    height:25px;
    vertical-align:middle;
    margin-left:15px;
 }
-
-/* ******************** wrapper inserimento nuovo quadro ******************** */
 .wrapper:nth-of-type(2){
 	padding: 0 20px 20px 20px;
 	/* fa in modo che il padding non venga sommato a width */
