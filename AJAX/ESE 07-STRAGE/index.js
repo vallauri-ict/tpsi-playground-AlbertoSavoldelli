@@ -11,8 +11,6 @@ $(document).ready(function () {
     let _lblErrore = $("#lblErrore")
 	
 	let _domande = $(".domande")
-	
-	/* ******************************* */
 
     _login.show()
     _test.hide()
@@ -25,12 +23,9 @@ $(document).ready(function () {
         {
             "user":user, "pwd":pwd
         }
-        // let request = inviaRichiesta("get", `/studenti?user=${user}&pwd=${pwd}`);
-        let request = inviaRichiesta("get", "/studenti", json); // Più strutturata
+        let request = inviaRichiesta("get", "/studenti", json); 
         request.fail(errore);
         request.done(function(data){
-            // data è un vettore enumerativo di json
-            // che può essere lungo 1 se login ok o 0 se login non è ok
             if(data.length > 0){
                 _login.hide();
                 _test.show();
@@ -44,7 +39,6 @@ $(document).ready(function () {
     _lblErrore.children("button").on("click", function(){
 		_lblErrore.fadeOut(1000)
 	})
-    /***************************************************/
 
     function InviaRichiestaDomande(){
         let request = inviaRichiesta("get", "/domande");
@@ -54,8 +48,6 @@ $(document).ready(function () {
                 let br = $("<br>");
                 br.appendTo(_test.children().eq(2));
                 let div = $("<div>"); 
-                // var div = $("<div>"); NON FUNZIONA IN QUESTO CASO, perchè tutti i done //// vedrebbero solo l'ultimo div creato
-                // div.prop("id", risposta.id);
                 div.appendTo(_test.children().eq(2));
 
                 let p = $("<p>");
@@ -104,16 +96,6 @@ $(document).ready(function () {
             btn.on("click", function(){
                 let opts = $("input[type=radio]:checked");
                 let voto = 0;
-                /*for (const opt of opts) {
-                    if(($(opt).prop("risposta")).correct)
-                        voto++;
-                    else $(opt).next().css({"color" : "red"});
-                }*/
-                /*for (let i = 0; i < opts.length; i++) {
-                    if((opts.eq(i).prop("risposta")).correct)
-                        voto++;
-                    else opts.eq(i).next().css({"color" : "red"});
-                }*/
                 opts.each(function(i, ref){
                     if(($(this).prop("risposta")).correct)
                         voto++;
