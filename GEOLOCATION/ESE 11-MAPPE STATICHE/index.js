@@ -1,8 +1,7 @@
 "use strict";
 
 let URL = "https://maps.googleapis.com/maps/api/staticmap"
-const key  = "AIzaSyBZKYgxbiyRE7DknUpnRP2QHCBVjvLgH7g" //qui inserisco la chiave
-
+//const key  = //qui inserisco la chiave
 const params = {
 	"key":key,
 	"center": /*"via san michele 68, fossano",*/ "44.5557763,7.7347183",
