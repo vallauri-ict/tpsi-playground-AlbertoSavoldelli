@@ -4,22 +4,16 @@ window.onload=function(){
     let chart;
     let _btnInvia = $("#btnInvia");
     let _tbody = $("tbody");
-    let _canvas = $("canvas")[0]; // questo e quello sotto sono equivalenti
-    //let _canvas = document.getElementsByTagName("canvas")[0];
+    let _canvas = $("canvas")[0]; 
     _btnInvia.on("click", function(){
-        // i parametri gert si possono passare in 3 modi
-        // 1) "/?results=100";
-        // 2) con un json ("/", {"results":"100"});
-        // 3) passiamo un urlEncoded "/", "results=100"
         let request = inviaRichiesta("get", "/", {"results":"100"});
         request.fail(errore);
         request.done(function(persone){
-            //console.log(data);
             _tbody.empty();
             _canvas = $("canvas")[0]; 
             let nations = {}; 
             for (const persona of persone.results) {
-                if(persona.location.country in nations) // IMPORTANTE
+                if(persona.location.country in nations) 
                 nations[persona.location.country]++;
                 else 
                 nations[persona.location.country] = 1;
@@ -53,20 +47,18 @@ window.onload=function(){
             if(chart != undefined)
                 chart.destroy();
 
-            chart = new Chart(_canvas, // ASINCRONO
+            chart = new Chart(_canvas, 
             { 
                 type: 'bar', 
                 data: 
                 { 
-                    // si aspetta un enumerativo
-                    "labels": Object.keys(nations), // IMPORTANTE
+                    "labels": Object.keys(nations),
                     "datasets": [{ 
                         "label": 'Grafico delle nazioni', 
-                        // si aspetta un enumerativo
                         "data": values, 
                         "backgroundColor": colors, 
                         "borderColor": "#000", 
-                        "borderWidth": 1  // default=2   
+                        "borderWidth": 1
                         }] 
                 } 
             }); 
@@ -77,9 +69,7 @@ window.onload=function(){
     a.prop("href", "#");
     a.css({"float" : "right"})
     a.text("Salva immagine");
-    a.prop("download", "New file.png") // deve essere valorizzata
-    // l'impostazione dell'attributo href deve essere
-    // eseguita depo che i canvas venga generato
+    a.prop("download", "New file.png")
     a.on("click",function(){
         a.prop("href", _canvas.toDataURL("chart/png"));
     })
